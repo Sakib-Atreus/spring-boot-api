@@ -7,7 +7,12 @@ import org.hibernate.annotations.UuidGenerator;
 import java.util.UUID;
 
 @Entity
-@Table(name = "products")
+@Table(
+    name = "products",
+    uniqueConstraints = {
+        @UniqueConstraint(columnNames = "name")
+    }
+)
 @Data
 @NoArgsConstructor
 @AllArgsConstructor

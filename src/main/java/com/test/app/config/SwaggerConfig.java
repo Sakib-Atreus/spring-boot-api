@@ -7,9 +7,9 @@ import org.springframework.context.annotation.Configuration;
 @Configuration
 @OpenAPIDefinition(
         info = @Info(
-                title = "Product API",
-                version = "1.0",
-                description = "Spring Boot Product CRUD API"
+                title = "Spring Boot - API",
+                version = "1.1",
+                description = "Spring Boot Product CRUD API with Order Management"
         )
 )
 public class SwaggerConfig {

@@ -11,7 +11,7 @@ import java.util.UUID;
 
 import io.swagger.v3.oas.annotations.tags.Tag;
 
-@Tag(name = "Product APIs", description = "CRUD operations for products")
+@Tag(name = "Product APIs", description = "Product Management APIs")
 @RestController
 @RequestMapping("/api/products")
 @RequiredArgsConstructor

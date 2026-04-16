@@ -4,6 +4,9 @@ import lombok.*;
 
 import java.time.LocalDateTime;
 
+import com.fasterxml.jackson.annotation.JsonPropertyOrder;
+
+@JsonPropertyOrder({ "success", "message", "data", "timestamp" })
 @Data
 @AllArgsConstructor
 @NoArgsConstructor
