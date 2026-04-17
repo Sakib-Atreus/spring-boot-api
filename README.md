@@ -37,7 +37,7 @@ This project demonstrates clean architecture, modular structure, and basic busin
 ---
 
 ## 📁 Project Structure
-
+```
 src/main/java/com/test/app/modules/
 
 ├── product/
@@ -58,7 +58,7 @@ src/main/java/com/test/app/modules/
 │   └── OrderRepository.java
 
 ---
-
+```
 ## ⚙️ Setup & Run
 
 ### 1. Clone the repository
