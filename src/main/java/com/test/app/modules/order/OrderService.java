@@ -32,45 +32,34 @@ public class OrderService {
             throw new RuntimeException("Product not available");
         }
 
+        // reduce stock
         product.setQuantity(product.getQuantity() - request.getQuantity());
-        productRepository.save(product);
-
-        double totalPrice = product.getPrice() * request.getQuantity();
 
         Order order = new Order();
-        order.setProductId(product.getId());
+        order.setProduct(product);
         order.setQuantity(request.getQuantity());
-        order.setTotalPrice(totalPrice);
+        order.setTotalPrice(product.getPrice() * request.getQuantity());
         order.setStatus(OrderStatus.SUCCESS);
 
         Order saved = orderRepository.save(order);
 
-        return OrderMapper.toResponse(saved, product.getName());
+        return OrderMapper.toResponse(saved);
     }
 
     // GET ALL ORDERS
     public List<OrderResponse> getAllOrders() {
-        return orderRepository.findAll()
+        return orderRepository.findAllWithProduct()
                 .stream()
-                .map(order -> {
-                    String productName = productRepository.findById(order.getProductId())
-                            .map(Product::getName)
-                            .orElse("Unknown Product");
-
-                    return OrderMapper.toResponse(order, productName);
-                })
+                .map(OrderMapper::toResponse)
                 .toList();
     }
 
     // GET ORDER BY ID
     public OrderResponse getOrderById(UUID id) {
-        Order order = orderRepository.findById(id)
+
+        Order order = orderRepository.findByIdWithProduct(id)
                 .orElseThrow(() -> new RuntimeException("Order not found"));
 
-        String productName = productRepository.findById(order.getProductId())
-                .map(Product::getName)
-                .orElse("Unknown Product");
-
-        return OrderMapper.toResponse(order, productName);
+        return OrderMapper.toResponse(order);
     }
 }

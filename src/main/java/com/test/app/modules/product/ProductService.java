@@ -18,13 +18,11 @@ public class ProductService {
 
     // CREATE
     public ProductResponse create(ProductRequest request) {
-        Product product = new Product();
-        product.setName(request.getName());
-        product.setDescription(request.getDescription());
-        product.setPrice(request.getPrice());
-        product.setQuantity(request.getQuantity());
+        Product product = ProductMapper.toEntity(request);
+        
+        Product saved = productRepository.save(product);
 
-        return ProductMapper.toResponse(productRepository.save(product));
+        return ProductMapper.toResponse(saved);
     }
 
     // GET ALL

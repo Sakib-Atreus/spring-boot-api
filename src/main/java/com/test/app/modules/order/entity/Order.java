@@ -6,6 +6,7 @@ import lombok.*;
 import java.util.UUID;
 
 import com.test.app.modules.order.enums.OrderStatus;
+import com.test.app.modules.product.entity.Product;
 
 @Entity
 @Table(name = "orders")
@@ -19,7 +20,9 @@ public class Order {
     @GeneratedValue
     private UUID id;
 
-    private UUID productId;
+    @ManyToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name = "product_id")
+    private Product product;
 
     private Integer quantity;
 

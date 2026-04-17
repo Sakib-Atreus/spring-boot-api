@@ -5,10 +5,10 @@ import com.test.app.modules.order.dto.OrderResponse;
 
 public class OrderMapper {
 
-    public static OrderResponse toResponse(Order order, String productName) {
+    public static OrderResponse toResponse(Order order) {
         return new OrderResponse(
                 order.getId(),
-                productName,
+                order.getProduct().getName(),
                 order.getQuantity(),
                 order.getTotalPrice(),
                 order.getStatus().name()
