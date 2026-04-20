@@ -1,4 +1,4 @@
-# 🚀 Spring Boot API
+# Spring Boot API
 
 A beginner-friendly **Spring Boot REST API** for managing products and orders.  
 This project demonstrates clean architecture, modular structure, and basic business logic like inventory handling.
